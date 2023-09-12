@@ -1,10 +1,11 @@
 import React from 'react'
-import { type listOfTodos } from '../types'
+
 import { Todo } from './Todo'
+import { type listOfTodos, type TodoId } from '../types'
 
 interface Props {
   todos: listOfTodos
-  onRemoveTodo: (id: string) => void
+  onRemoveTodo: ({ id }: TodoId) => void
 }
 
 const Todos: React.FC <Props> = ({ todos, onRemoveTodo }) => {
@@ -15,11 +16,11 @@ const Todos: React.FC <Props> = ({ todos, onRemoveTodo }) => {
           key={todo.id}
           className={`${todo.completed ? 'completed' : ''}`}>
          <Todo
-           key={todo.id}
-           id={todo.id}
-           title={todo.title}
-           completed={todo.completed}
-           onRemoveTodo={onRemoveTodo}
+          key={todo.id}
+          id={todo.id}
+          title={todo.title}
+          completed={todo.completed}
+          onRemoveTodo={onRemoveTodo}
          />
         </li>
       ))}
